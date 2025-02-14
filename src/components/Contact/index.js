@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { useState, useRef } from 'react'
 import styled from 'styled-components'
-import { useRef } from 'react';
 import emailjs from '@emailjs/browser';
-import { Snackbar } from '@mui/material';
+import Alert from '@mui/material/Alert';
+import Snackbar from '@mui/material/Snackbar';
+
 
 const Container = styled.div`
 display: flex;
@@ -130,7 +131,7 @@ const Contact = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    emailjs.sendForm('service_tox7kqs', 'template_nv7k7mj', form.current, 'SybVGsYS52j2TfLbi')
+    emailjs.sendForm('service_o9ky8w5', 'template_y79dgej', form.current, 'h0YlYyZOSwoZBEqMx')
       .then((result) => {
         setOpen(true);
         form.current.reset();
@@ -157,10 +158,12 @@ const Contact = () => {
         <Snackbar
           open={open}
           autoHideDuration={6000}
-          onClose={()=>setOpen(false)}
-          message="Email sent successfully!"
-          severity="success"
-        />
+          onClose={() => setOpen(false)}
+        >
+          <Alert onClose={() => setOpen(false)} severity="success" sx={{ width: '100%' }}>
+            Email sent successfully!
+          </Alert>
+        </Snackbar>
       </Wrapper>
     </Container>
   )
